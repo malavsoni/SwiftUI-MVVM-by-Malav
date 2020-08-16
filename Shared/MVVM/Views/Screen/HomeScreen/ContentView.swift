@@ -59,6 +59,8 @@ struct ContentView: View {
                     Button(action: {
                     }, label: {
                         Image("setting-slider-horizontal")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.appPrimary)
                             .padding(.leading, 5.0)
                     }),
                 trailing:
@@ -66,7 +68,9 @@ struct ContentView: View {
                         action: {},
                     label: {
                         Image("real-estate-search-house")
-                    .padding(.trailing, 5.0)
+                            .renderingMode(.template)
+                            .foregroundColor(Color.appPrimary)
+                            .padding(.trailing, 5.0)
             }))
         }
     }
