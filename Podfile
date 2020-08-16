@@ -16,5 +16,6 @@ target 'SwiftUI-MVVM-Sample (macOS)' do
   use_frameworks!
 
   # Pods for SwiftUI-MVVM-Sample (macOS)
-
+  pod 'Alamofire'
+  pod 'SwiftLint'
 end

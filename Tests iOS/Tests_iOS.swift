@@ -3,10 +3,10 @@
 //  Tests iOS
 //
 //  Created by Malav Soni on 16/08/20.
-//
+//Undefined symbol: protocol conformance descriptor for SwiftUI_MVVM_Sample.OWResponse : Swift.Decodable in SwiftUI_MVVM_Sample
 
 import XCTest
-
+@testable import SwiftUI_MVVM_Sample
 class Tests_iOS: XCTestCase {
 
     override func setUpWithError() throws {
