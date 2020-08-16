@@ -17,7 +17,7 @@ class MTAPIClient: NSObject {
     fileprivate static let apiKey = "c81e452ef8a78be39dc840ff6cef9dbd"
     fileprivate static let baseUrl:String = "http://api.openweathermap.org/data/2.5/"
 
-    enum Endpoint {
+    enum Router {
         case openWeather(lat:Double,long:Double)
 
         var url:URL? {
@@ -34,8 +34,8 @@ class MTAPIClient: NSObject {
 }
 
 // MARK: - Private Methods
-extension MTAPIClient {
-    private func callApi<T:Decodable>(withURL apiURL:URL,expectedClass:T.Type,methodType type:HTTPMethod = .get,parameters:[String:Any] = [:],headers:HTTPHeaders=[:],completion:((Result<T,Error>) -> Void)?) {
+private extension MTAPIClient {
+    func callApi<T:Decodable>(withURL apiURL:URL,expectedClass:T.Type,methodType type:HTTPMethod = .get,parameters:[String:Any] = [:],headers:HTTPHeaders=[:],completion:((Result<T,Error>) -> Void)?) {
 
         // Check for internet
         guard MTAPIClient.isInternetAvailable else {
@@ -80,7 +80,7 @@ extension MTAPIClient {
         }
 
         // Call the API
-        if let apiURL = Endpoint.openWeather(lat: lat, long: long).url {
+        if let apiURL = Router.openWeather(lat: lat, long: long).url {
             self.callApi(withURL: apiURL, expectedClass: expectedClass, completion: completion)
         } else {
             completion?(.failure(MTOpenWeatherAPIClientError.invalidParameters))
