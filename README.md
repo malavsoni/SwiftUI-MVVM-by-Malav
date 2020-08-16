@@ -8,3 +8,9 @@
   - CoreData Support
   - Core Location Integration
   - Test cases
+  
+TestCases in BETA is not working.
+
+Checkout this thread for more information. 
+
+https://developer.apple.com/forums/thread/649918?page=1
