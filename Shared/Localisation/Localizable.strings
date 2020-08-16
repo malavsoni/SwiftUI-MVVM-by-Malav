@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  SwiftUI-MVVM-Sample
+
+  Created by Malav Soni on 16/08/20.
+  
+*/
+
+"requestDenied" = "Location Request Denied.\nPlease enable it from settings.";
+"locationServiceDisable" = "Location services is disabled.\nPlease enable it from settings.";
+"failedToGetLocationInfo" = "Failed to get the location information.\nPlease try again later.";
+
+"invalidParameters" = "Invalid fetch request found.\nPlease try again later.";
+"failedToParseResponse" = "Invalid response received from server.\nPlease try again later.";
+"internetNotAvailable" = "Internet not found.";
+ 
+// When there is no data available in local storage
+"noDataAvailable" = "No data available.";
+
+// When internet is not available
+"youAreOffline" = "You are offline.";
+
+// Additional Info Title
+"precipitation" = "Precipitation";
+"humidity" = "Humidity";
+"windy" = "Windy";

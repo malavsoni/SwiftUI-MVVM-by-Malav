@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17183" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1.0">
+    <entity name="MSLocation" representedClassName="MSLocation" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="weatherInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="OWResponse" inverseName="location" inverseEntity="OWResponse"/>
+    </entity>
+    <entity name="OWDaily" representedClassName="OWDaily" syncable="YES">
+        <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="response" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OWResponse" inverseName="daily" inverseEntity="OWResponse"/>
+        <relationship name="temp" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="OWTemp" inverseName="daily" inverseEntity="OWTemp"/>
+    </entity>
+    <entity name="OWHourly" representedClassName="OWHourly" syncable="YES">
+        <attribute name="humidity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="rain" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="OWRain" inverseName="hourly" inverseEntity="OWRain"/>
+        <relationship name="response" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OWResponse" inverseName="hourly" inverseEntity="OWResponse"/>
+        <relationship name="weather" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OWWeather" inverseName="hourly" inverseEntity="OWWeather"/>
+    </entity>
+    <entity name="OWRain" representedClassName="OWRain" syncable="YES">
+        <attribute name="chances" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="hourly" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OWHourly" inverseName="rain" inverseEntity="OWHourly"/>
+    </entity>
+    <entity name="OWResponse" representedClassName="OWResponse" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timezone" optional="YES" attributeType="String"/>
+        <relationship name="daily" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OWDaily" inverseName="response" inverseEntity="OWDaily"/>
+        <relationship name="hourly" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OWHourly" inverseName="response" inverseEntity="OWHourly"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MSLocation" inverseName="weatherInfo" inverseEntity="MSLocation"/>
+    </entity>
+    <entity name="OWTemp" representedClassName="OWTemp" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="eve" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="max" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="min" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="morn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="night" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OWDaily" inverseName="temp" inverseEntity="OWDaily"/>
+    </entity>
+    <entity name="OWWeather" representedClassName="OWWeather" syncable="YES">
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="main" optional="YES" attributeType="String"/>
+        <attribute name="weatherDescription" optional="YES" attributeType="String"/>
+        <relationship name="hourly" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OWHourly" inverseName="weather" inverseEntity="OWHourly"/>
+    </entity>
+    <elements>
+        <element name="MSLocation" positionX="-781.78125" positionY="-425.4453125" width="128" height="133"/>
+        <element name="OWDaily" positionX="-432.80859375" positionY="-434.87890625" width="128" height="88"/>
+        <element name="OWHourly" positionX="-437.89453125" positionY="-284.90234375" width="128" height="148"/>
+        <element name="OWRain" positionX="-247.3359375" positionY="-109.09375" width="128" height="73"/>
+        <element name="OWResponse" positionX="-619.64453125" positionY="-411.2109375" width="128" height="133"/>
+        <element name="OWTemp" positionX="-257.07421875" positionY="-441.359375" width="128" height="148"/>
+        <element name="OWWeather" positionX="-631.26953125" positionY="-101.73046875" width="128" height="103"/>
+    </elements>
+</model>
